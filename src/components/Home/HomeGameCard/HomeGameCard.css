@@ -1,0 +1,10 @@
+#home-card {
+    width: 18rem;
+    display: inline-block;
+    margin: 70px;
+    padding: auto;
+}
+
+.card-body>#card-button {
+    margin-left: 35px;
+}

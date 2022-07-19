@@ -1,0 +1,19 @@
+.catalog-view {
+    color: antiquewhite;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-top: 70px;
+}
+
+#catalog-card{
+    color: black;
+    display:inline-block;
+    width: 490px;
+    height:fit-content;
+    margin: 80px;
+}
+
+.catalog-title {
+    font-weight: 700;
+    font-size: 7ch;
+}

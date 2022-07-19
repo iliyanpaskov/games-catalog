@@ -1,0 +1,20 @@
+.mission {
+    width: auto;
+    padding-right: 5px;
+    padding-top: 3em;
+    padding-left: 5px;
+    text-align: center;
+    display: inline-block;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: beige;
+    font-size: large;
+}
+
+
+.mission>img {
+    float: right;
+    width: 600px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
