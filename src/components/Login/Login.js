@@ -1,18 +1,23 @@
 import "./Login.css"
 
 const Login = () => {
+    const submitLogin =(e) =>{
+        e.preventDefault();
+    }
+    
     return (
-        <form className="login-form">
-            <div className="mb-3" >
-                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <form onSubmit={submitLogin} className="login-form">
+            <div className="login-wrapper">
+                <h1>Login</h1>
+                <label className="label" htmlFor="email">Email:</label>
+                <input className="login-input" type="email" id="email" placeholder="Enter your email here"></input>
+                <label className="label" htmlFor="password">Password:</label>
+                <input className="login-input" type="password" id="password" placeholder="Enter your password here"></input>
+
+
+                <button type="submit" className="login-button">Login</button>
             </div>
 
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1"/>
-            </div>
-            <button type="submit" className="btn btn-primary">Login</button>
         </form>
     )
 }
