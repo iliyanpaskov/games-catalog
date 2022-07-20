@@ -1,22 +1,23 @@
 import "./Register.css"
 
 const Register = () => {
-    return (
-        <form className="register-form">
-            <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-            </div>
+    
+    const submitRegister = (e) => {
+        e.preventDefault();
+    }
 
-            <div className="mb-3">
-                <label htmlFor="" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1"/>
+    return (
+        <form onSubmit={submitRegister} className="register-form">
+            <div className="register-wrapper">
+                <h1>Register</h1>
+                <label className="label" htmlFor="email">Email:</label>
+                <input className="register-input" type="email" id="email" placeholder="Enter your email here"></input>
+                <label className="label" htmlFor="password">Password:</label>
+                <input className="register-input" type="password" id="password" placeholder="Enter your password here"></input>
+                <label className="label" htmlFor="password">Password:</label>
+                <input className="register-input" type="password" id="password" placeholder="Confirm password here"></input>
+                <button type="submit" className="register-button">Register</button>
             </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Repeat Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1"/>
-            </div>
-            <button type="submit" className="btn btn-primary">Register</button>
         </form>
     )
 

@@ -1,10 +1,10 @@
 import "./Login.css"
 
 const Login = () => {
-    const submitLogin =(e) =>{
+    const submitLogin = (e) => {
         e.preventDefault();
     }
-    
+
     return (
         <form onSubmit={submitLogin} className="login-form">
             <div className="login-wrapper">
