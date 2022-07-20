@@ -5,14 +5,20 @@ const HomeGameCard = () => {
 
     return (
 
-        <div className="card" id="home-card" >
-            <img src="/images/Diablo_II_Coverart.png" className="card-img-top" alt="..." />
+        <div className="top-games-card">
+            <img src="/images/black-knight.png" className="card-img-top" alt="image was not found..." />
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-                <Link to="#" className="btn btn-primary" id="card-button">Details</Link>
-                <Link to="#" className="btn btn-primary" id="card-button">Details</Link>
+                <h3 className="card-title">Card title</h3>
+                <p className="card-text">Some quick example text to basdsadasdsadsadsauild on the card title and make up the bulk of the card's content.</p>
+                {/* TODO  Links..... */}
+                <ul className="cards-btns-wrapper">
+                    <li>
+                        <Link to="#" className="top-games-card-btn" >Details</Link>
+                    </li>
+                    <li>
+                        <Link to="#" className="top-games-card-btn" >Details</Link>
+                    </li>
+                </ul>
 
             </div>
         </div>

@@ -1,45 +1,42 @@
-.home-page{
-    width: auto;
-    padding-right: 15px;
-    padding-top: 7em;
-    justify-content: right;
-    padding-left: 15px;
-    position: relative;
-    box-sizing: border-box;
-    text-align: center;
-    display: inline-block;
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
+
+.home-page {
+    display: flex;
+    margin: 0 0;
 }
 
-.home-message {
+.home-message{
     color: white;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-style:italic;
-    font-weight: bold;
+    margin-left: 100px;
+}
+
+.title {
+    font-family: "Merienda";
+    font-size: 35px;
+    margin-top: 100px;
+    padding: 20px 30px;
+}
+
+.home-page-img{
+    flex-basis: 50%;
+    margin: 60px;
+    margin-right: 150px;
+    -webkit-box-shadow: 0px 4px 37px 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 4px 37px 1px rgba(201, 12, 12, 0.67);
+}
+
+.top-games-title {
+    font-family: "Merienda";
+    color: white;
     font-size: 50px;
-    margin-left: 60px;
+    text-align: center;
+    margin: 25px auto;
 }
 
-.top-games { 
-        color: white;
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-style:italic;
-        font-weight: bold;
-        font-size: 50px;
-        margin-top: 30px;
-        text-align: center; 
+.top-games-list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+
 }
-
-
-
-#knight {
-    height: 500px;
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 60%;
-    margin-left: 250px;
-    margin-top: 20px;
-    padding-left: auto;
-    max-width: 100%;
-    
-}
-
