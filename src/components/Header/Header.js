@@ -22,7 +22,10 @@ const Header = () => {
                     <Link className="nav-link" to="/register">Register</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/my-games">MyGames</Link>
+                    <Link className="nav-link" to="/my-games">My Games</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/create">Add New Game</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/logout" >LogOut</Link>

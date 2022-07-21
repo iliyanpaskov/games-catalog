@@ -38,5 +38,13 @@
     align-items: center;
     width: 100%;
     justify-content: space-evenly;
+}
 
+.no-games-added {
+    color: white;
+    font-family: "Merienda";
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 20px 30px;
 }
