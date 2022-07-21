@@ -1,0 +1,41 @@
+.catalog-card {
+    align-items: center;
+    display: block;
+    border: 1px solid white;
+    text-align: center;
+    height: auto;
+    width: 100%;
+    margin: 30px 0;
+    padding: 10px;
+    -webkit-box-shadow: 0px 4px 37px 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 4px 37px 1px rgba(201, 12, 12, 0.67);
+}
+
+.catalog-card-img {
+    width: 60%;
+    object-fit: cover;
+}
+
+.card-game-title {
+    margin-top: 15px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-family: "Merienda";
+}
+
+.card-game-category {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.card-game-maxlvl {
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+}

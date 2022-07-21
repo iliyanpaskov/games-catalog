@@ -1,4 +1,29 @@
-.catalog-view {
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
+
+.catalog {
+    /* background-color: blue; */
+    text-align: center;
+    align-items: center;
+    margin: 50px 20px;
+}
+
+.catalog-list-wrapper {
+    display: inline-block;
+    align-items: center;
+    /* text-align: center; */
+    /* background-color: red; */
+    /* justify-content: space-evenly; */
+    width: 80%;
+}
+
+.catalog-title {
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-family: "Merienda";
+}
+
+/* .catalog-view {
     color: antiquewhite;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
@@ -16,4 +41,4 @@
 .catalog-title {
     font-weight: 700;
     font-size: 7ch;
-}
+} */

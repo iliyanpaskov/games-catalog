@@ -9,7 +9,7 @@ const HomeGameCard = () => {
             <img src="/images/black-knight.png" className="card-img-top" alt="image was not found..." />
             <div className="card-body">
                 <h3 className="card-title">Card title</h3>
-                <p className="card-text">Some quick example text to basdsadasdsadsadsauild on the card title and make up the bulk of the card's content.</p>
+                <p className="card-text">Category.</p>
                 {/* TODO  Links..... */}
                 <ul className="cards-btns-wrapper">
                     <li>

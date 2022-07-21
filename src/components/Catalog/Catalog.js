@@ -1,11 +1,18 @@
 import "./Catalog.css"
+import CatalogGameCard from "./CatalogGameCard/CatalogGameCard.js";
+
 
 const Catalog = () => {
     return (
-        <div className="catalog-view">
+        <div className="catalog">
             <h1 className="catalog-title">The best old games are:</h1>
-            <ul>
-                <div className="card mb-3" id="catalog-card">
+            <ul className="catalog-list-wrapper">
+                <CatalogGameCard/>
+                <CatalogGameCard/>
+                
+                
+                
+                {/* <div className="card mb-3" id="catalog-card">
                     <img src="http://i.imgur.com/nfx15kC.jpg" className="card-img-top" alt="..."/>
                         <div className="card-body">
                             <h5 className="card-title">Card title</h5>
@@ -28,8 +35,8 @@ const Catalog = () => {
                             <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                         </div>
-                </div>
-        
+                </div> */}
+
             </ul>
         </div>
     )
