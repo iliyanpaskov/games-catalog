@@ -1,20 +1,23 @@
-.mission {
-    width: auto;
-    padding-right: 5px;
-    padding-top: 3em;
-    padding-left: 5px;
+.our-mission-box{
+    display: flex;
+}
+
+.mission-wrapper{
+    margin: 20px 20px;
+    display: flex;
+}
+
+.our-missin-text{
+    color: white;
+    font-size: 19px;
+    font-style: italic;
+    width: 40%;
     text-align: center;
-    display: inline-block;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: beige;
-    font-size: large;
 }
 
-
-.mission>img {
-    float: right;
-    width: 600px;
-    margin-left: 30px;
-    margin-right: 30px;
+.our-mission-img{
+    width: 50%;
+    margin-left: 70px;
+    -webkit-box-shadow: 0px 4px 37px 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 4px 37px 1px rgba(201, 12, 12, 0.67);
 }
-
