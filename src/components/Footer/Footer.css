@@ -1,19 +1,11 @@
 .footer {
     color: antiquewhite;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: x-large;
-    /* background-color:peru ; */
+    font-size: 19px;
     position: fixed;
-    left: 0;
     bottom: 0;
     width: 100%;
-    background-color: white;
-    color:slategray;
+    background-color: rgb(192, 147, 147);
+    color:rgb(61, 67, 73);
     text-align: center;
- 
-
-
 }
-
-/* footer-text {
-} */
