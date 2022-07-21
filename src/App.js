@@ -1,4 +1,6 @@
 import { Switch, Route } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext"; 
+
 import Catalog from "./components/Catalog/Catalog";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
