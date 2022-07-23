@@ -1,7 +1,8 @@
-import { useContext } from "react"
-import { useHistory } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext.js"
-import * as authService from "../../services/authServices.js"
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext.js";
+import * as authService from "../../services/authServices.js";
+import { Link } from "react-router-dom"; 
 import "./Login.css"
 
 const Login = () => {
@@ -19,7 +20,6 @@ const Login = () => {
             .then((authData) => {
                 // console.log(authData);
                 loginData(authData);
-                // console.log(user);
                 historyHook.push("/");
 
             }).catch(err => {
@@ -39,6 +39,7 @@ const Login = () => {
 
 
                 <button type="submit" className="login-button">Login</button>
+                <p>If you don't have an account click  :<Link className="nav-link" to="/register">HERE</Link></p>
             </div>
 
         </form>

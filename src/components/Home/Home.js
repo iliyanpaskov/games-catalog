@@ -12,12 +12,9 @@ const Home = () => {
     useEffect(() => {
         const lastAddedGames = async () => {
             let result = await gamesServices.getLastAddedGames();
-            // console.log(Object.values(result));
             setGames(Object.values(result));
-
         }
         lastAddedGames();
-        // console.log(games);
     }, []);
 
     // console.log(user);
@@ -25,9 +22,7 @@ const Home = () => {
         <>
             <div className="home-page">
                 <div className="title">
-                    {user._id
-                        ? <h1 className="home-message">BEST OLD GAMES COLLECTION</h1>
-                        : <h1>lalala</h1>}
+                    <h1 className="home-message">BEST OLD GAMES COLLECTION</h1>
                 </div>
                 <img className="home-page-img" src="/images/Diablo_II_Coverart.png" alt="No img found" />
             </div>

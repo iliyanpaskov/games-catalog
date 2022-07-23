@@ -14,7 +14,6 @@ export const login = async (email, password) => {
         const res = await fetch(`${baseUrl}/users/login`, settings);
         const data = await res.json();
         if (res.ok) {
-            // console.log(data);
             return data;
         } else {
             throw data.message;

@@ -32,3 +32,13 @@
     font-size: 18px;
     font-style: italic;
 }
+
+.welcome-message{
+    align-items: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+
+}
