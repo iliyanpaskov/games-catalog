@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import "./Header.css"
+import { AuthContext } from "../../context/AuthContext";
+
 
 const Header = () => {
+    const { user, logoutData } = useContext(AuthContext);
+    const userLogout =  () => {
+       logoutData()
+    }
+
 
     return (
         <nav className="main-navigation">
@@ -28,10 +36,11 @@ const Header = () => {
                     <Link className="nav-link" to="/create">Add New Game</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/logout" >LogOut</Link>
+                    <Link className="nav-link" to="/" onClick={userLogout} >LogOut</Link>
                 </li>
             </ul>
         </nav>
     )
 }
+
 export default Header;

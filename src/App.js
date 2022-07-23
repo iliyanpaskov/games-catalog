@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
-import { AuthContext } from "./context/AuthContext"; 
+// import { AuthContext } from "./context/AuthContext";
+// import { useState } from "react";
 
 import Catalog from "./components/Catalog/Catalog";
 import Footer from "./components/Footer/Footer";
@@ -9,29 +10,34 @@ import Login from "./components/Login/Login";
 import OurMission from "./components/OurMission/OurMission";
 import Register from "./components/Register/Register";
 import CreateGame from "./components/CreateGame/CreateGame";
+import { AuthState } from "./context/AuthContext";
 
 
 
 function App() {
+
+
+
   return (
-    <div >
-      <Header />
 
-      <main>
-        <Switch>
-          <Route path={"/"} exact component={Home} />
-          <Route path={"/our-mission"} component={OurMission} />
-          <Route path={"/catalog"} component={Catalog} />
-          <Route path={"/login"} component={Login} />
-          <Route path={"/register"} component={Register} />
-          <Route path={"/create"} component={CreateGame}/>
+    <AuthState>
+      <div >
+        <Header />
+        <main>
+          <Switch>
+            <Route path={"/"} exact component={Home} />
+            <Route path={"/our-mission"} component={OurMission} />
+            <Route path={"/catalog"} component={Catalog} />
+            <Route path={"/login"} component={Login} />
+            <Route path={"/register"} component={Register} />
+            <Route path={"/create"} component={CreateGame} />
 
+          </Switch>
+        </main>
 
-        </Switch>
-      </main>
-
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </AuthState>
   );
 }
 

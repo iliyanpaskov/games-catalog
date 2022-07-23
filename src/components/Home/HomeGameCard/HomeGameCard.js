@@ -8,7 +8,7 @@ const HomeGameCard = ({
     return (
 
         <div className="top-games-card">
-            <img src={game.imageUrl} className="card-img-top" alt="image was not found..." />
+            <img src={game.imageUrl} className="card-img-top" alt="Not found..." />
             <div className="card-body">
                 <h3 className="card-title">Card title: {game.title}</h3>
                 <p className="card-text">Category: {game.category}</p>
