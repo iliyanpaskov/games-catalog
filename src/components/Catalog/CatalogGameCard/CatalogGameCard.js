@@ -23,9 +23,6 @@ const CatalogGameCard = () => {
                 <li>
                     <Link to="#" className="top-games-card-btn" >Edit</Link>
                 </li>
-                <li>
-                    <Link to="#" className="top-games-card-btn" >Delete</Link>
-                </li>
             </ul>
         </div>
     )

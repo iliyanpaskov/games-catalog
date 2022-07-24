@@ -9,6 +9,32 @@ const HomeGameCard = ({
 }) => {
     const { user } = useContext(AuthContext);
 
+    const userButtons = () => {
+        return (
+            <>
+                <li>
+                    <Link to={`/details/${game._id}`} className="top-games-card-btn" >Details</Link>
+                </li>
+                <li>
+                    <Link to="#" className="top-games-card-btn" >Comment</Link>
+                </li>
+            </>
+        )
+    }
+
+    const ownerButtons = () => {
+        return (
+            <>
+                <li>
+                    <Link to="#" className="top-games-card-btn" >Edit</Link>
+                </li>
+                <li>
+                    <Link to="#" className="top-games-card-btn" >Delete</Link>
+                </li>
+            </>
+        )
+    }
+
     return (
 
         <div className="top-games-card">
@@ -18,18 +44,12 @@ const HomeGameCard = ({
                 <p className="card-text">Category: {game.category}</p>
                 {/* TODO  Links..... */}
                 <ul className="cards-btns-wrapper">
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Details</Link>
-                    </li>
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Comment</Link>
-                    </li>
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Edit</Link>
-                    </li>
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Delete</Link>
-                    </li>
+                    {user._id ? userButtons() : <></>}
+                    {user._id == game._ownerId
+                        ? ownerButtons()
+                        : <></>
+                    }
+
                 </ul>
 
             </div>
