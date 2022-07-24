@@ -27,16 +27,22 @@ export const AuthState = ({ children }) => {
                     accsessToken: null,
                     email: null,
                 })
-
-            }
+            } else {
+            //TODO...
+            }   
         } catch {
-
+            alert("Wrong email or password !")
         }
     }
 
+    const registerData = (authData) => {
+        setUser(authData);
+    }
+    
+
 
     return (
-        <AuthContext.Provider value={{ user, loginData, logoutData }}>
+        <AuthContext.Provider value={{ user, loginData, logoutData , registerData}}>
             {children}
         </AuthContext.Provider>
     )

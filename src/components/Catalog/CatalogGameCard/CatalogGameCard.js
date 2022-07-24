@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./CatalogGameCard.css"
 
+
 const CatalogGameCard = () => {
 
     return (
@@ -18,6 +19,9 @@ const CatalogGameCard = () => {
                 </li>
                 <li>
                     <Link to="#" className="top-games-card-btn" >Comment</Link>
+                </li>
+                <li>
+                    <Link to="#" className="top-games-card-btn" >Edit</Link>
                 </li>
                 <li>
                     <Link to="#" className="top-games-card-btn" >Delete</Link>

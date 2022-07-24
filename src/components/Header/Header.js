@@ -18,7 +18,7 @@ const Header = () => {
 
     const guestMessage = () => {
         return (
-            <p className="welcome-message">Welcome to Best Catalog! Pleace Login </p>
+            <p className="welcome-message">Welcome to our games catalog! Pleace Login! </p>
         )
     }
 
