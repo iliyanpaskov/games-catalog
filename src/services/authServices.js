@@ -33,7 +33,7 @@ export const register = async (email, password) => {
         const data = await res.json();
         if (res.ok) {
             return data;
-        } else if (res.status == 409) {
+        } else if (res.status === 409) {
             alert("This email is allready registered")
         } else {
             throw data.message;

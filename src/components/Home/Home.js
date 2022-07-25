@@ -11,7 +11,7 @@ const Home = () => {
     const { user } = useContext(AuthContext);
     useEffect(() => {
         const lastAddedGames = async () => {
-            let result = await gamesServices.getLastAddedGames();
+            let result = await gamesServices.getAllGames();
             setGames(Object.values(result));
         }
         lastAddedGames();
