@@ -29,7 +29,7 @@ const Home = () => {
             <h1 className="top-games-title">Soon Added Games:</h1>
             <div className="top-games-list">
                 {games.length > 0
-                    ? games.slice(games.length - 3).map(x => <HomeGameCard key={x._id} game={x} />)
+                    ? games.slice(0,3).map(x => <HomeGameCard key={x._id} game={x} />)
                     : <p className="no-games-added"> There are no games added !</p>
                 }
 

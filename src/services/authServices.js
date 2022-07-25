@@ -39,7 +39,7 @@ export const register = async (email, password) => {
             throw data.message;
         }
     } catch {
-        alert("All fields must be fill!")
+        alert("All fields must be filled!")
     }
 }
 
