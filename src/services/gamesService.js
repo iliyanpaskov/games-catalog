@@ -5,3 +5,9 @@ export async function getAllGames() {
     const result = await res.json();
     return result;
 }
+
+export async function getOneGame(gameId) {
+    const res = await fetch (`${baseUrl}${gameId}`);
+    const result = await res.json();
+    return result;
+}

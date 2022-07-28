@@ -13,31 +13,23 @@ const CatalogGameCard = ({
     const userButtons = () => {
         if (user._id) {
             return (
-                <>
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Details</Link>
-                    </li>
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Comment</Link>
-                    </li>
-                </>
+                <li>
+                    <Link to="#" className="top-games-card-btn" >Comment</Link>
+                </li>
             )
         }
     }
 
     const ownerButtons = () => {
         return (
-            <>
-                <li>
-                    <Link to="#" className="top-games-card-btn" >Edit</Link>
-                </li>
-                <li>
-                    <Link to="#" className="top-games-card-btn" >Delete</Link>
-                </li>
-            </>
+            <li>
+                <Link to="#" className="top-games-card-btn" >Edit</Link>
+            </li>
+            // <li>
+            //     <Link to="#" className="top-games-card-btn" >Delete</Link>
+            // </li> 
         )
     }
-
 
     return (
         <div className="catalog-card" >
@@ -45,10 +37,12 @@ const CatalogGameCard = ({
             <div className="card-body">
                 <h2 className="card-game-title">{game.title}</h2>
                 <p className="card-game-category">Category: {game.category}</p>
-                <p className="card-game-maxlvl">Max Level: {game.maxLevel} </p>
             </div>
             {/* TODO Buttons... */}
             <ul className="cards-btns-wrapper">
+                <li>
+                    <Link to={`/details/${game._id}`} className="top-games-card-btn" >Details</Link>
+                </li>
                 {user._id === game._ownerId
                     ? ownerButtons()
                     : userButtons()

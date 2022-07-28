@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./HomeGameCard.css"
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
+import "./HomeGameCard.css"
 
 
 const HomeGameCard = ({
@@ -9,32 +9,22 @@ const HomeGameCard = ({
 }) => {
     const { user } = useContext(AuthContext);
 
-    const userButtons = () => {
+
+    const userButton = () => {
         if (user._id) {
-            console.log(user._id);
             return (
-                <>
-                    <li>
-                        <Link to={`/details/${game._id}`} className="top-games-card-btn" >Details</Link>
-                    </li>
-                    <li>
-                        <Link to="#" className="top-games-card-btn" >Comment</Link>
-                    </li>
-                </>
+                <li>
+                    <Link to="#" className="top-games-card-btn" >Comment</Link>
+                </li>
             )
         }
     }
 
-    const ownerButtons = () => {
+    const ownerButton = () => {
         return (
-            <>
-                <li>
-                    <Link to="#" className="top-games-card-btn" >Edit</Link>
-                </li>
-                <li>
-                    <Link to="#" className="top-games-card-btn" >Delete</Link>
-                </li>
-            </>
+            <li>
+                <Link to="#" className="top-games-card-btn" >Edit</Link>
+            </li>
         )
     }
 
@@ -47,12 +37,14 @@ const HomeGameCard = ({
                 <p className="card-text">Category: {game.category}</p>
                 {/* TODO  Links..... */}
                 <ul className="cards-btns-wrapper">
+                    <li>
+                        <Link to={`/data/games/${game._id}`} className="top-games-card-btn" >Details</Link>
+                    </li>
                     {user._id === game._ownerId
-                        ? ownerButtons()
-                        : userButtons()
+                        ? ownerButton()
+                        : userButton()
                     }
                 </ul>
-
             </div>
         </div>
     )
