@@ -20,7 +20,27 @@ export async function createGame(token, title, category, maxLevel, imageUrl, sum
             throw data.message;
         }
     } catch {
-     // TODO Catch
+        // TODO Catch
     }
+}
 
+
+
+export async function deleteGame(token, gameId) {
+    try {  
+        const res = await fetch(`${baseUrl}/data/games/${gameId}`, {
+            method: "DELETE",
+            headers: {
+                "X-Authorization": (`${token}`)
+            }
+        })
+        const data = await res.json();
+        if (res.ok) {
+            return data;
+        } else {
+            throw data.message;
+        }
+    } catch (error) {
+        //TODO..
+    }
 }

@@ -1,7 +1,8 @@
 import * as gamesServices from "../../services/gamesService.js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import * as userServices from "../../services/userService.js";
 import "./Details.css";
 // const baseUrl = "https://softuni-oldgames-custom.herokuapp.com";
 
@@ -11,15 +12,21 @@ const Details = ({
 }) => {
     const [game, setGame] = useState({});
     const { user } = useContext(AuthContext);
+    const historyHook = useHistory();
+
 
     useEffect(() => {
         const gameDetails = async () => {
             let result = await gamesServices.getOneGame(match.url);
             setGame(result);
-            // console.log(result.title);
         }
         gameDetails();
     }, [])
+
+    const delGame = () => {
+        userServices.deleteGame(user.accessToken, game._id);
+        historyHook.push("/catalog")
+    }
 
     const ownerBtns = () => {
         return (
@@ -28,7 +35,7 @@ const Details = ({
                     <Link to="#" className="game-details-btn" >Edit</Link>
                 </li>
                 <li>
-                    <Link to="#" className="game-details-btn" >Delete</Link>
+                    <Link to="#" className="game-details-btn" onClick={delGame} >Delete</Link>
                 </li>
             </>
         )
@@ -70,7 +77,6 @@ const Details = ({
                         ? ownerBtns()
                         : userBtn()
                 }
-
             </div>
         </div>
     )
