@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
+
+.not-found{
+    display: inline;
+    width: 100%;
+    text-align: center;
+
+}
+
+.not-found-title {
+    color: whitesmoke;
+    font-family: "Merienda";
+    font-size: 70px;
+    margin-top: 100px;
+
+}
