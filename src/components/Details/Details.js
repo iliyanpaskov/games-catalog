@@ -6,15 +6,17 @@ import * as userServices from "../../services/userService.js";
 import "./Details.css";
 
 const Details = ({
-    match
+    match,
+
 }) => {
     const [game, setGame] = useState({});
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
+    const url = Object.values(match.params)[0];
 
     useEffect(() => {
         const gameDetails = async () => {
-            let result = await gamesServices.getOneGame(match.url);
+            let result = await gamesServices.getOneGame(url);
             setGame(result);
         }
         gameDetails();
@@ -22,7 +24,7 @@ const Details = ({
 
     const delGame = () => {
         userServices.deleteGame(user.accessToken, game._id);
-        historyHook.push("/catalog")
+        historyHook.push("/")
     }
 
     const ownerBtns = () => {

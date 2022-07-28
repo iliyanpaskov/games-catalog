@@ -14,7 +14,7 @@ const MyGamesCard = ({
                 {/* TODO  Links..Edit and Comment */}
                 <ul className="my-cards-btns-wrapper">
                     <li>
-                    <Link to={`/data/games/${game._id}`} className="my-games-card-btn" >Details</Link>
+                    <Link to={`/details/${game._id}`} className="my-games-card-btn" >Details</Link>
                     </li>
                     <li>
                         <Link to="#" className="my-games-card-btn" >Edit</Link>

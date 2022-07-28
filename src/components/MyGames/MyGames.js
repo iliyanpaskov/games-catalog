@@ -18,13 +18,10 @@ const MyGames = () => {
         allMyGames();
     },[])
     
-    
-    
-
     return (
         <div className="my-games-wapper">
             <div className="my-games-title-wapper">
-                <h1 className="my-games-title">You games are:</h1>
+                <h1 className="my-games-title">{user.email} games:</h1>
             </div>
 
             <div className="my-games-list-wrapper">

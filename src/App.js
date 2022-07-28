@@ -9,6 +9,7 @@ import Register from "./components/Register/Register";
 import CreateGame from "./components/CreateGame/CreateGame";
 import Details from "./components/Details/Details"
 import MyGames from "./components/MyGames/MyGames";
+import EditGame from "./components/EditGame/EditGame"
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { AuthState } from "./context/AuthContext";
 import { GameState } from "./context/GameContext";
@@ -16,7 +17,6 @@ import { GameState } from "./context/GameContext";
 
 
 function App() {
-
 
   return (
     <AuthState>
@@ -32,7 +32,8 @@ function App() {
             <Route path={"/register"} component={Register} />
             <Route path={"/create"} component={CreateGame} />
             <Route path={"/my-games"} component={MyGames} />
-            <Route path={"/data/games/:id"} component={Details} />
+            <Route path={"/details/:id"} component={Details} />
+            <Route path={"/edit/:id"} component={EditGame}/>
             <Route path={""} component={PageNotFound}/>
 
           </Switch>

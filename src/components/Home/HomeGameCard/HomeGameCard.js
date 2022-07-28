@@ -7,26 +7,7 @@ import "./HomeGameCard.css"
 const HomeGameCard = ({
     game,
 }) => {
-    const { user } = useContext(AuthContext);
 
-
-    const userButton = () => {
-        if (user._id) {
-            return (
-                <li>
-                    <Link to="#" className="top-games-card-btn" >Comment</Link>
-                </li>
-            )
-        }
-    }
-
-    const ownerButton = () => {
-        return (
-            <li>
-                <Link to="#" className="top-games-card-btn" >Edit</Link>
-            </li>
-        )
-    }
 
     return (
 
@@ -38,12 +19,8 @@ const HomeGameCard = ({
                 {/* TODO  Links..Edit and Comment */}
                 <ul className="cards-btns-wrapper">
                     <li>
-                        <Link to={`/data/games/${game._id}`} className="top-games-card-btn" >Details</Link>
+                        <Link to={`/details/${game._id}`} className="top-games-card-btn" >Details</Link>
                     </li>
-                    {user._id === game._ownerId
-                        ? ownerButton()
-                        : userButton()
-                    }
                 </ul>
             </div>
         </div>
