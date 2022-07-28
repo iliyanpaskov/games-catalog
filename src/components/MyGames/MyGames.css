@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
+
+.my-games-wapper{ 
+    width: 100%;
+    height: auto;
+    margin: 30px 0px;
+    /* background-color: red; */
+    padding: 20px 20px;
+}
+
+.my-games-title-wapper {
+    display: inline;
+    text-align: center;
+}
+
+.my-games-title {
+    font-family: "Merienda";
+    font-size: 35px;
+    color: white;
+}
+
+.my-games-list-wrapper{
+    display: flex;
+}

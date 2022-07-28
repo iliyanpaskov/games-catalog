@@ -4,8 +4,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import * as userServices from "../../services/userService.js";
 import "./Details.css";
-// const baseUrl = "https://softuni-oldgames-custom.herokuapp.com";
-
 
 const Details = ({
     match
@@ -13,7 +11,6 @@ const Details = ({
     const [game, setGame] = useState({});
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
-
 
     useEffect(() => {
         const gameDetails = async () => {
@@ -50,7 +47,6 @@ const Details = ({
             )
         }
     }
-
 
     return (
         <div className="details-box">

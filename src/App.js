@@ -1,7 +1,4 @@
 import { Switch, Route } from "react-router-dom";
-// import { AuthContext } from "./context/AuthContext";
-// import { useState } from "react";
-
 import Catalog from "./components/Catalog/Catalog";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -11,13 +8,13 @@ import OurMission from "./components/OurMission/OurMission";
 import Register from "./components/Register/Register";
 import CreateGame from "./components/CreateGame/CreateGame";
 import Details from "./components/Details/Details"
+import MyGames from "./components/MyGames/MyGames";
 import { AuthState } from "./context/AuthContext";
 import { GameState } from "./context/GameContext";
 
 
 
 function App() {
-
 
 
   return (
@@ -33,7 +30,9 @@ function App() {
             <Route path={"/login"} component={Login} />
             <Route path={"/register"} component={Register} />
             <Route path={"/create"} component={CreateGame} />
+            <Route path={"/my-games"} component={MyGames} />
             <Route path={"/data/games/:id"} component={Details} />
+            
 
           </Switch>
         </main>

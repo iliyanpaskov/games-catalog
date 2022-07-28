@@ -33,9 +33,9 @@ const HomeGameCard = ({
         <div className="top-games-card">
             <img src={game.imageUrl} className="card-img-top" alt="Not found..." />
             <div className="card-body">
-                <h3 className="card-title">Card title: {game.title}</h3>
+                <h3 className="card-title"> {game.title}</h3>
                 <p className="card-text">Category: {game.category}</p>
-                {/* TODO  Links..... */}
+                {/* TODO  Links..Edit and Comment */}
                 <ul className="cards-btns-wrapper">
                     <li>
                         <Link to={`/data/games/${game._id}`} className="top-games-card-btn" >Details</Link>
