@@ -25,9 +25,6 @@ const CatalogGameCard = ({
             <li>
                 <Link to="#" className="top-games-card-btn" >Edit</Link>
             </li>
-            // <li>
-            //     <Link to="#" className="top-games-card-btn" >Delete</Link>
-            // </li> 
         )
     }
 
@@ -41,7 +38,7 @@ const CatalogGameCard = ({
             {/* TODO Buttons... */}
             <ul className="cards-btns-wrapper">
                 <li>
-                    <Link to={`/details/${game._id}`} className="top-games-card-btn" >Details</Link>
+                    <Link to={`/data/games/${game._id}`} className="top-games-card-btn" >Details</Link>
                 </li>
                 {user._id === game._ownerId
                     ? ownerButtons()
