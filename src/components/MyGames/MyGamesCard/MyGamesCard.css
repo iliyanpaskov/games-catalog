@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
 
-.top-games-card {
+.my-games-card {
     margin: 80px;
     padding: 25px 30px;
     border: 2px white solid;
@@ -11,30 +11,30 @@
     width: 30%;
 
 }
-.card-body {
+.my-card-body {
     margin: auto;
 }
 
-.card-img-top {
+.my-card-img {
     width: 200px;
     height: 300px;
     object-fit: cover;
     color: white;
 }
 
-.card-title {
+.my-card-title {
     color: white;
     font-family: "Merienda";
     text-align: center;
 }
 
-.card-text{
+.my-card-text{
     color: white;
     font-style: italic;
     text-align: center;
 }
 
-.cards-btns-wrapper {
+.my-cards-btns-wrapper {
     list-style: none;
     margin: 10px;
     display: flex;
@@ -44,7 +44,7 @@
     padding: 5px;
 }
 
-.top-games-card-btn{
+.my-games-card-btn{
     text-decoration: none;
     font-style: italic;
     color: white;
@@ -53,6 +53,6 @@
     border-radius: 30px;
 }
 
-.top-games-card-btn:hover{
+.my-games-card-btn:hover{
     background-color: rgb(206, 147, 29);
 }

@@ -21,4 +21,6 @@
 
 .my-games-list-wrapper{
     display: flex;
+    justify-content: space-evenly;
+
 }
