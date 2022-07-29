@@ -6,17 +6,15 @@ import * as userServices from "../../services/userService.js";
 import "./Details.css";
 
 const Details = ({
-    match,
-
+    match
 }) => {
     const [game, setGame] = useState({});
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
-    const url = Object.values(match.params)[0];
 
     useEffect(() => {
         const gameDetails = async () => {
-            let result = await gamesServices.getOneGame(url);
+            let result = await gamesServices.getOneGame(match.params.id);
             setGame(result);
         }
         gameDetails();
@@ -31,7 +29,7 @@ const Details = ({
         return (
             <>
                 <li>
-                    <Link to="#" className="game-details-btn" >Edit</Link>
+                    <Link to={`/edit/${game._id}`} className="game-details-btn" >Edit</Link>
                 </li>
                 <li>
                     <Link to="#" className="game-details-btn" onClick={delGame} >Delete</Link>

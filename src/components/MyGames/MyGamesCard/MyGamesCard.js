@@ -17,7 +17,7 @@ const MyGamesCard = ({
                     <Link to={`/details/${game._id}`} className="my-games-card-btn" >Details</Link>
                     </li>
                     <li>
-                        <Link to="#" className="my-games-card-btn" >Edit</Link>
+                        <Link to={`/edit/${game._id}`} className="my-games-card-btn" >Edit</Link>
                     </li>
 
                 </ul>
