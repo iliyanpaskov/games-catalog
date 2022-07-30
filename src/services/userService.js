@@ -27,7 +27,7 @@ export async function createGame(token, title, category, maxLevel, imageUrl, sum
 
 
 export async function deleteGame(token, gameId) {
-    try {  
+    try {
         const res = await fetch(`${baseUrl}/data/games/${gameId}`, {
             method: "DELETE",
             headers: {
@@ -42,5 +42,26 @@ export async function deleteGame(token, gameId) {
         }
     } catch (error) {
         //TODO..
+    }
+}
+
+export async function getGameComments(token, gameId) {
+    const settings = {
+        headers: {
+            "X-Authorization": (`${token}`)
+        }
+    }
+    try {
+        const res = await fetch(`${baseUrl}/data/comments?where=gameId%3D%22${gameId}%22`,settings);
+        const result = await res.json();
+
+        if(res.ok){
+            return result;
+        }else{
+            throw result.message;
+        }
+
+    } catch (error) {
+        //TODO
     }
 }

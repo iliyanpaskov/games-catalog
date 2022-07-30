@@ -46,11 +46,10 @@
     color: white;
     display: block;
     width: 40%;
-    margin: 30px;    
+    margin: 30px;
 }
 
-.game-info-list{
-    margin: 30px;
+.game-info-list {
     list-style: none;
 }
 
@@ -70,7 +69,7 @@
     margin-top: 40px;
 }
 
-.game-details-btn{
+.game-details-btn {
     text-decoration: none;
     font-style: italic;
     font-size: 22px;
@@ -80,6 +79,18 @@
     border-radius: 30px;
 }
 
-.game-details-btn:hover{
+.game-details-btn:hover {
     background-color: rgb(206, 147, 29);
+}
+
+.comments-box {
+    background-color: red;
+    text-align: center;
+
+}
+
+.comments-title{
+    color: white;
+    font-family: "Merienda";
+    display: inline;
 }

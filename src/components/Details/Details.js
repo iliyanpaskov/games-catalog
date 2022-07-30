@@ -9,6 +9,7 @@ const Details = ({
     match
 }) => {
     const [game, setGame] = useState({});
+    const [comments, setComments] = useState([])
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
 
@@ -18,7 +19,16 @@ const Details = ({
             setGame(result);
         }
         gameDetails();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        const gameComents = async () => {
+            let result = await userServices.getGameComments(user.accessToken, game._id);
+            setComments(result);
+            console.log(result);
+        }
+        gameComents();
+    }, []);
 
     const delGame = () => {
         userServices.deleteGame(user.accessToken, game._id);
@@ -66,6 +76,13 @@ const Details = ({
                         <li className="game-li">Description: {game.summary}</li>
                     </ul>
                 </div>
+            </div>
+            <div className="comments-box">
+                <h2 className="comments-title">Comments:</h2>
+                <ul className="comments-list">
+                    {comments.length > 0
+                    }
+                </ul>
             </div>
             <div className="details-btns-wrapper">
                 {
