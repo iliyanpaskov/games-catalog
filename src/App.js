@@ -10,6 +10,7 @@ import CreateGame from "./components/CreateGame/CreateGame";
 import Details from "./components/Details/Details"
 import MyGames from "./components/MyGames/MyGames";
 import EditGame from "./components/EditGame/EditGame"
+import Comment from "./components/Comment/Comment"
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { AuthState } from "./context/AuthContext";
 import { GameState } from "./context/GameContext";
@@ -34,6 +35,7 @@ function App() {
             <Route path={"/my-games"} component={MyGames} />
             <Route path={"/details/:id"} component={Details} />
             <Route path={"/edit/:id"} component={EditGame}/>
+            <Route path={"/comment/:id"} component={Comment}/>
             <Route path={""} component={PageNotFound}/>
 
           </Switch>

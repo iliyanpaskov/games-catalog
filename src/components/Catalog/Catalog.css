@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
 
 .catalog {
-    /* background-color: blue; */
     text-align: center;
     align-items: center;
     margin: 50px 20px;
@@ -10,9 +9,6 @@
 .catalog-list-wrapper {
     display: inline-block;
     align-items: center;
-    /* text-align: center; */
-    /* background-color: red; */
-    /* justify-content: space-evenly; */
     width: 80%;
 }
 

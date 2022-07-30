@@ -14,7 +14,7 @@ const CatalogGameCard = ({
         if (user._id) {
             return (
                 <li>
-                    <Link to="#" className="top-games-card-btn" >Comment</Link>
+                    <Link to={`/comment/${game._id}`} className="top-games-card-btn" >Comment</Link>
                 </li>
             )
         }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as gameServices from "../../services/gamesService.js"
-import "./Catalog.css"
 import CatalogGameCard from "./CatalogGameCard/CatalogGameCard.js";
+import "./Catalog.css"
 
 
 const Catalog = () => {

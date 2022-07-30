@@ -84,8 +84,10 @@
 }
 
 .comments-box {
-    background-color: red;
     text-align: center;
+    align-items: center;
+    margin: 0px 300px;
+    padding: 20px;
 
 }
 
@@ -93,4 +95,9 @@
     color: white;
     font-family: "Merienda";
     display: inline;
+}
+
+.no-comments{
+    color: whitesmoke;
+    font-family: "Merienda";
 }

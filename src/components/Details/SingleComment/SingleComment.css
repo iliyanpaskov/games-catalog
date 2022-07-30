@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
+
+.current-comment-box {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    margin-top: 10px;
+    border: 2px white solid;
+    border-radius: 30px;
+    font-family: "Merienda" ;
+    background-color:  rgb(206, 147, 29);
+
+}
+
+.comment{
+    color: white;
+}

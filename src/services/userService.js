@@ -52,16 +52,38 @@ export async function getGameComments(token, gameId) {
         }
     }
     try {
-        const res = await fetch(`${baseUrl}/data/comments?where=gameId%3D%22${gameId}%22`,settings);
+        const res = await fetch(`${baseUrl}/data/comments?where=gameId%3D%22${gameId}%22`, settings);
         const result = await res.json();
 
-        if(res.ok){
+        if (res.ok) {
             return result;
-        }else{
+        } else {
             throw result.message;
         }
-
     } catch (error) {
         //TODO
+    }
+}
+
+
+export async function addComment(token, gameId, comment) {
+    const settings = {
+        method: "POST",
+        headers: {
+            "X-Authorization": (`${token}`)
+        },
+        body: JSON.stringify({gameId,comment})
+    }
+    try {
+        const res = await fetch(`${baseUrl}/data/comments`, settings);
+        const result = await res.json();
+
+        if (res.ok) {
+            return result;
+        } else {
+            throw result.message;
+        }
+    } catch (error) {
+        // TODO
     }
 }

@@ -1,7 +1,8 @@
-import * as gamesServices from "../../services/gamesService.js";
+import SingleComment from "./SingleComment/SingleComment.js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import * as gamesServices from "../../services/gamesService.js";
 import * as userServices from "../../services/userService.js";
 import "./Details.css";
 
@@ -22,18 +23,21 @@ const Details = ({
     }, []);
 
     useEffect(() => {
-        const gameComents = async () => {
-            let result = await userServices.getGameComments(user.accessToken, game._id);
-            setComments(result);
-            console.log(result);
+        if (user.accessToken) {
+            const gameComents = async () => {
+                let result = await userServices.getGameComments(user.accessToken, match.params.id);
+                setComments(result);
+            }
+            gameComents();
         }
-        gameComents();
     }, []);
+
 
     const delGame = () => {
         userServices.deleteGame(user.accessToken, game._id);
-        historyHook.push("/")
+        historyHook.push("/my-games")
     }
+
 
     const ownerBtns = () => {
         return (
@@ -52,11 +56,33 @@ const Details = ({
         if (user._id) {
             return (
                 <li>
-                    <Link to="#" className="game-details-btn" >Comment</Link>
+                    <Link to={`/comment/${game._id}`} className="game-details-btn" >Comment</Link>
                 </li>
             )
         }
     }
+
+    const currntGameComments = () => {
+        if (comments) {
+            return (
+                <>
+                    <h2 className="comments-title">Comments:</h2>
+                    <ul className="comments-list">
+                        {comments.map(x => <SingleComment key={x._id} game={x} />)}
+                    </ul>
+                </>
+            )
+        }
+    }
+
+    const noCommentsYet = () => {
+        if(user.accessToken && user._id !== game._ownerId){
+            return (
+                <h3 className="no-comments"> No comments yet! You can be first!</h3>
+            )
+        }
+    }
+
 
     return (
         <div className="details-box">
@@ -78,11 +104,11 @@ const Details = ({
                 </div>
             </div>
             <div className="comments-box">
-                <h2 className="comments-title">Comments:</h2>
-                <ul className="comments-list">
-                    {comments.length > 0
-                    }
-                </ul>
+                {
+                    comments.length > 0
+                        ? currntGameComments()
+                        : noCommentsYet()
+                }
             </div>
             <div className="details-btns-wrapper">
                 {
