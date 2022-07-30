@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { useHistory } from "react-router-dom";
 import MyGamesCard from "./MyGamesCard/MyGamesCard";
 import * as gamesServices from "../../services/gamesService.js";
 import "./MyGames.css"
@@ -8,7 +7,6 @@ import "./MyGames.css"
 const MyGames = () => {
     const [myGames, setMyGames] = useState([]);
     const {user} = useContext(AuthContext);
-    const historyHook = useHistory();
 
     useEffect(()=>{
         const allMyGames = async () => {
@@ -25,7 +23,7 @@ const MyGames = () => {
             </div>
 
             <div className="my-games-list-wrapper">
-                {myGames.filter(game => game._ownerId == user._id).map(x => <MyGamesCard key={x._id} game={x}/>)}
+                {myGames.filter(game => game._ownerId === user._id).map(x => <MyGamesCard key={x._id} game={x}/>)}
             </div>
         </div>
     )
