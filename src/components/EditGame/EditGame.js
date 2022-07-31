@@ -17,7 +17,7 @@ const EditGame = ({
             setGame(result)
         }
         gameToChange();
-    }, []);
+    }, [match.params.id]);
 
 
     const submitEdit = (e) => {

@@ -30,7 +30,7 @@ const CatalogGameCard = ({
 
     return (
         <div className="catalog-card" >
-            <img src={game.imageUrl} className="catalog-card-img" alt="NO IMAGE FOUND" />
+            <img src={game.imageUrl} className="catalog-card-img" alt="NO FOUND" />
             <div className="card-body">
                 <h2 className="card-game-title">{game.title}</h2>
                 <p className="card-game-category">Category: {game.category}</p>

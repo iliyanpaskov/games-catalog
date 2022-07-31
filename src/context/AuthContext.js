@@ -28,8 +28,8 @@ export const AuthState = ({ children }) => {
                     email: null,
                 })
             } else {
-            //TODO...
-            }   
+                throw res.message
+            }
         } catch {
             alert("Wrong email or password !")
         }
@@ -38,11 +38,11 @@ export const AuthState = ({ children }) => {
     const registerData = (authData) => {
         setUser(authData);
     }
-    
+
 
 
     return (
-        <AuthContext.Provider value={{ user, loginData, logoutData , registerData}}>
+        <AuthContext.Provider value={{ user, loginData, logoutData, registerData }}>
             {children}
         </AuthContext.Provider>
     )

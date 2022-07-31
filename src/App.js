@@ -13,15 +13,12 @@ import EditGame from "./components/EditGame/EditGame"
 import Comment from "./components/Comment/Comment"
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { AuthState } from "./context/AuthContext";
-import { GameState } from "./context/GameContext";
-
 
 
 function App() {
 
   return (
     <AuthState>
-      <GameState>
       <div >
         <Header />
         <main>
@@ -34,16 +31,13 @@ function App() {
             <Route path={"/create"} component={CreateGame} />
             <Route path={"/my-games"} component={MyGames} />
             <Route path={"/details/:id"} component={Details} />
-            <Route path={"/edit/:id"} component={EditGame}/>
-            <Route path={"/comment/:id"} component={Comment}/>
-            <Route path={""} component={PageNotFound}/>
-
+            <Route path={"/edit/:id"} component={EditGame} />
+            <Route path={"/comment/:id"} component={Comment} />
+            <Route path={""} component={PageNotFound} />
           </Switch>
         </main>
-
         <Footer />
       </div>
-      </GameState>
     </AuthState>
   );
 }

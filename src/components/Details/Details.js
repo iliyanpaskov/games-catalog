@@ -20,7 +20,7 @@ const Details = ({
             setGame(result);
         }
         gameDetails();
-    }, []);
+    }, [match.params.id]);
 
     useEffect(() => {
         if (user.accessToken) {
@@ -30,7 +30,7 @@ const Details = ({
             }
             gameComents();
         }
-    }, []);
+    }, [user.accessToken, match.params.id]);
 
 
     const delGame = () => {
