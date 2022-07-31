@@ -36,6 +36,7 @@ export async function deleteGame(token, gameId) {
         })
         const data = await res.json();
         if (res.ok) {
+            
             return data;
         } else {
             throw data.message;
@@ -72,7 +73,7 @@ export async function addComment(token, gameId, comment) {
         headers: {
             "X-Authorization": (`${token}`)
         },
-        body: JSON.stringify({gameId,comment})
+        body: JSON.stringify({ gameId, comment })
     }
     try {
         const res = await fetch(`${baseUrl}/data/comments`, settings);

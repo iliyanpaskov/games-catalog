@@ -10,7 +10,7 @@ const EditGame = ({
     const [game, setGame] = useState({});
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
-
+    
     useEffect(() => {
         const gameToChange = async () => {
             let result = await gamesService.getOneGame(match.params.id)
@@ -18,8 +18,6 @@ const EditGame = ({
         }
         gameToChange();
     }, []);
-
-
 
 
     const submitEdit = (e) => {
@@ -30,6 +28,7 @@ const EditGame = ({
             const changedGame = async () => {
                 let gameData = await gamesService.changeGame(game._id, user.accessToken, title, category, maxLevel, imageUrl, summary);
                 historyHook.push(`/details/${game._id}`)
+                return(gameData)
             }
             changedGame();
         }

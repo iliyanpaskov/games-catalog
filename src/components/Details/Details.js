@@ -76,7 +76,7 @@ const Details = ({
     }
 
     const noCommentsYet = () => {
-        if(user.accessToken && user._id !== game._ownerId){
+        if (user.accessToken && user._id !== game._ownerId) {
             return (
                 <h3 className="no-comments"> No comments yet! You can be first!</h3>
             )

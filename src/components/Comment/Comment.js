@@ -20,6 +20,7 @@ const Comment = ({
         if (comment !== "") {
             const result = await userServices.addComment(user.accessToken, id, comment);
             historyHook.push(`/details/${id}`)
+            return (result);
         }else{
             alert("You can't add empty comment !")
         }
