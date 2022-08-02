@@ -34,8 +34,8 @@ const Details = ({
 
 
     const delGame = () => {
-        userServices.deleteGame(user.accessToken, game._id);
-        historyHook.push("/my-games")
+            userServices.deleteGame(user.accessToken, game._id);
+            historyHook.push("/my-games")
     }
 
 

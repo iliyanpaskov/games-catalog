@@ -5,7 +5,7 @@ import * as authService from "../../services/authServices.js"
 import "./Register.css"
 
 const Register = () => {
-    const { registerData } = useContext(AuthContext);
+    const { loginData } = useContext(AuthContext);
 
     let historyHook = useHistory();
 
@@ -20,7 +20,7 @@ const Register = () => {
         if (email !== "" && password === repPassword) {
             authService.register(email,password)
                 .then((authData) => {
-                    registerData(authData);
+                    loginData(authData);
                     historyHook.push("/");
                 }).catch(err => {
                     alert(err?.message)

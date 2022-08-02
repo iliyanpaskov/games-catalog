@@ -15,8 +15,8 @@ export const login = async (email, password) => {
         } else {
             throw data.message;
         }
-    } catch {
-        alert("Wrong email or password !")
+    } catch (err){
+        alert(err)
     }
 }
 
@@ -37,8 +37,8 @@ export const register = async (email, password) => {
         } else {
             throw data.message;
         }
-    } catch {
-        alert("All fields must be filled!")
+    } catch (err) {
+        alert(err.message)
     }
 }
 

@@ -1,11 +1,14 @@
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+// import { useContext } from "react";
+// import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
+import { isAuthenticated } from "../../hoc/isAuthenticated.js";
 import * as userServices from "../../services/userService.js"
 import "./CreateGame.css";
 
-const CreateGame = () => {
-    const { user } = useContext(AuthContext)
+const CreateGame = ({
+    user
+}) => {
+    // const { user } = useContext(AuthContext) 
     const historyHook = useHistory();
 
     const submitCreate = (e) => {
@@ -44,4 +47,4 @@ const CreateGame = () => {
     )
 }
 
-export default CreateGame;
+export default isAuthenticated(CreateGame);

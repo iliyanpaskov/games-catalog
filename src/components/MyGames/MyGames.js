@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
 import MyGamesCard from "./MyGamesCard/MyGamesCard";
 import * as gamesServices from "../../services/gamesService.js";
+import { isAuthenticated } from "../../hoc/isAuthenticated";
 import "./MyGames.css"
 
-const MyGames = () => {
+const MyGames = ({
+    user
+}) => {
     const [myGames, setMyGames] = useState([]);
-    const {user} = useContext(AuthContext);
 
     useEffect(()=>{
         const allMyGames = async () => {
@@ -29,4 +30,4 @@ const MyGames = () => {
     )
 }
 
-export default MyGames;
+export default isAuthenticated(MyGames);

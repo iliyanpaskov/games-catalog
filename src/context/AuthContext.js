@@ -5,7 +5,10 @@ const baseUrl = "https://softuni-oldgames-custom.herokuapp.com";
 
 export const AuthContext = createContext();
 
-export const AuthState = ({ children }) => {
+export const AuthState = ({
+    children
+}) => {
+
     const [user, setUser] = useState({
         _id: null,
         accsessToken: null,
@@ -24,25 +27,23 @@ export const AuthState = ({ children }) => {
             if (res.ok) {
                 setUser({
                     _id: null,
-                    accsessToken: null,
+                    accessToken: null,
                     email: null,
                 })
             } else {
                 throw res.message
             }
-        } catch {
-            alert("Wrong email or password !")
+        } catch (err) {
+            alert(err.message)
         }
     }
 
-    const registerData = (authData) => {
-        setUser(authData);
-    }
+
 
 
 
     return (
-        <AuthContext.Provider value={{ user, loginData, logoutData, registerData }}>
+        <AuthContext.Provider value={{ user, loginData, logoutData ,isAuthenticated:Boolean(user.accessToken) }}>
             {children}
         </AuthContext.Provider>
     )
