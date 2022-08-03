@@ -11,7 +11,7 @@ export const AuthState = ({
 
     const [user, setUser] = useState({
         _id: null,
-        accsessToken: null,
+        accessToken: null,
         email: null,
     });
 

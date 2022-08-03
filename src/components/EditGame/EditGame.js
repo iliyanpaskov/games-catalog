@@ -34,7 +34,7 @@ const EditGame = ({
         }
     }
     return (
-        <form onSubmit={submitEdit} className="edit-form">
+        <form onSubmit={submitEdit} method="POST" className="edit-form">
             <div className="edit-wrapper">
                 <h1>Edit Game:</h1>
                 <label className="label" htmlFor="title">Game Title:</label>

@@ -1,19 +1,10 @@
 import "./Home.css"
 import HomeGameCard from "./HomeGameCard/HomeGameCard";
-import { useState, useEffect } from "react";
-import * as gamesServices from "../../services/gamesService.js";
+import useFetch from "../../hooks/useFetch";
 
 
 const Home = () => {
-    const [games, setGames] = useState([]);
-
-    useEffect(() => {
-        const lastAddedGames = async () => {
-            let result = await gamesServices.getAllGames();
-            setGames(Object.values(result));
-        }
-        lastAddedGames();
-    }, []);
+    const games = useFetch();
 
     return (
         <>

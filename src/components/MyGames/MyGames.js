@@ -1,22 +1,13 @@
-import { useEffect, useState } from "react";
 import MyGamesCard from "./MyGamesCard/MyGamesCard";
-import * as gamesServices from "../../services/gamesService.js";
 import { isAuthenticated } from "../../hoc/isAuthenticated";
 import "./MyGames.css"
+import useFetch from "../../hooks/useFetch";
 
 const MyGames = ({
     user
 }) => {
-    const [myGames, setMyGames] = useState([]);
+    const myGames = useFetch();
 
-    useEffect(()=>{
-        const allMyGames = async () => {
-            const result = await gamesServices.getAllGames()
-            setMyGames(Object.values(result))
-        }
-        allMyGames();
-    },[])
-    
     return (
         <div className="my-games-wapper">
             <div className="my-games-title-wapper">

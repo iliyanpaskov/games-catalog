@@ -13,6 +13,7 @@ import EditGame from "./components/EditGame/EditGame"
 import Comment from "./components/Comment/Comment"
 import PageNotFound from "./components/PageNotFound/PageNotFound";
 import { AuthState } from "./context/AuthContext";
+import Dialog from "./components/Details/Dialog/Dialog";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <main>
           <Switch>
             <Route path={"/"} exact component={Home} />
+            <Route path={"/dialog"} component={Dialog}/>
             <Route path={"/our-mission"} component={OurMission} />
             <Route path={"/catalog"} component={Catalog} />
             <Route path={"/login"} component={Login} />

@@ -18,6 +18,7 @@ const Login = () => {
 
         authService.login(email, password)
             .then((authData) => {
+                console.log(authData);
                 loginData(authData);
                 historyHook.push("/");
             }).catch(err => {
