@@ -33,12 +33,12 @@ export const register = async (email, password) => {
         if (res.ok) {
             return data;
         } else if (res.status === 409) {
-            alert("This email is allready registered")
+            throw data.message ;
         } else {
             throw data.message;
         }
     } catch (err) {
-        throw err
+        throw err.message;
     }
 }
 

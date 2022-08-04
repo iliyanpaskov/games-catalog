@@ -21,7 +21,7 @@ const Login = () => {
         authService.login(email, password)
             .then((authData) => {
 
-                toast.success('Login successful !  Wellcome !', {
+                toast.success(`Wellcome ${email}!`, {
                     position: "top-center",
                     autoClose: 2000,
                     hideProgressBar: true,
