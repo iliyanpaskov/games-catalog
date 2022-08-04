@@ -16,7 +16,7 @@ export const login = async (email, password) => {
             throw data.message;
         }
     } catch (err){
-        alert(err)
+        throw err;
     }
 }
 
@@ -38,7 +38,7 @@ export const register = async (email, password) => {
             throw data.message;
         }
     } catch (err) {
-        alert(err.message)
+        throw err
     }
 }
 

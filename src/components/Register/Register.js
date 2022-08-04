@@ -1,11 +1,15 @@
 import { Link, useHistory } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import * as authService from "../../services/authServices.js"
+import { toast, Zoom } from 'react-toastify';
 import "./Register.css"
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Register = () => {
     const { loginData } = useContext(AuthContext);
+    const [styleState, setStyleState] = useState(false);
 
     let historyHook = useHistory();
 
@@ -17,22 +21,75 @@ const Register = () => {
         const password = formData.get("password");
         const repPassword = formData.get("re-password");
 
-        if (email !== "" && password === repPassword) {
-            authService.register(email,password)
+        if (email !== "" && styleState && password === repPassword) {
+            authService.register(email, password)
                 .then((authData) => {
+
+                    toast.success('Registration successful !  Wellcome !', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        transition: Zoom,
+                        theme: "dark"
+                    });
                     loginData(authData);
                     historyHook.push("/");
                 }).catch(err => {
-                    alert(err?.message)
+
+                    toast.error(err, {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        transition: Zoom,
+                        theme: "dark"
+                    });
                 })
         } else {
             if (email === "") {
-                alert("You need to enter your email address !")
+                toast.error("Enter you email !", {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Zoom,
+                    theme: "dark"
+                });
             } else {
-                alert("Incorrect password !")
+                toast.error("Incorrect password !", {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Zoom,
+                    theme: "dark"
+                });
             }
         }
+    }
 
+    const checkPassHandler = (e) => {
+        let pass = e.currentTarget.value;
+        if (pass.length >= 4 && pass.length <= 12) {
+            setStyleState(true);
+            console.log(pass.length);
+        } else {
+            setStyleState(false)
+        }
+        
     }
 
     return (
@@ -42,7 +99,8 @@ const Register = () => {
                 <label className="label" htmlFor="email">Email:</label>
                 <input className="register-input" type="email" name="email" placeholder="Enter your email here"></input>
                 <label className="label" htmlFor="password">Password:</label>
-                <input className="register-input" type="password" name="password" placeholder="Enter your password here"></input>
+                <input className="register-input" type="password" name="password" placeholder="Enter your password here" onChange={checkPassHandler} ></input>
+                <span className="input-check" style={{ display: styleState ? "none" : "inline" }} >Password must be between 4 and 12 characters long !</span>
                 <label className="label" htmlFor="password">Confirm Password:</label>
                 <input className="register-input" type="password" name="re-password" placeholder="Confirm password here"></input>
                 <button type="submit" className="register-button">Register</button>

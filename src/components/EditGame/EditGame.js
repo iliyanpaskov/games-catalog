@@ -2,7 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import * as gamesService from "../../services/gamesService";
 import { useHistory } from "react-router-dom";
+import { toast, Zoom } from 'react-toastify';
 import "./EditGame.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditGame = ({
     match
@@ -10,7 +12,7 @@ const EditGame = ({
     const [game, setGame] = useState({});
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
-    
+
     useEffect(() => {
         const gameToChange = async () => {
             let result = await gamesService.getOneGame(match.params.id)
@@ -24,15 +26,40 @@ const EditGame = ({
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const [title, category, maxLevel, imageUrl, summary] = formData.values();
-        if (title !== "" && category !== "" && maxLevel !== "" && imageUrl !== "" && summary !== ""){
+        if (title !== "" && category !== "" && maxLevel !== "" && imageUrl !== "" && summary !== "") {
             const changedGame = async () => {
                 let gameData = await gamesService.changeGame(game._id, user.accessToken, title, category, maxLevel, imageUrl, summary);
+                toast.success('Game updated !', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Zoom,
+                    theme: "dark"
+                });
                 historyHook.push(`/details/${game._id}`)
-                return(gameData)
+                return (gameData)
             }
             changedGame();
+        }else{
+            toast.error("All fields must be filled !", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                transition: Zoom,
+                theme: "dark"
+            });
         }
+
     }
+
     return (
         <form onSubmit={submitEdit} method="POST" className="edit-form">
             <div className="edit-wrapper">

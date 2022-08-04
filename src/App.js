@@ -12,8 +12,9 @@ import MyGames from "./components/MyGames/MyGames";
 import EditGame from "./components/EditGame/EditGame"
 import Comment from "./components/Comment/Comment"
 import PageNotFound from "./components/PageNotFound/PageNotFound";
-import { AuthState } from "./context/AuthContext";
 import Dialog from "./components/Details/Dialog/Dialog";
+import { AuthState } from "./context/AuthContext";
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         <main>
           <Switch>
             <Route path={"/"} exact component={Home} />
-            <Route path={"/dialog"} component={Dialog}/>
+            <Route path={"/dialog"} component={Dialog} />
             <Route path={"/our-mission"} component={OurMission} />
             <Route path={"/catalog"} component={Catalog} />
             <Route path={"/login"} component={Login} />
@@ -39,6 +40,18 @@ function App() {
           </Switch>
         </main>
         <Footer />
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <ToastContainer />
       </div>
     </AuthState>
   );

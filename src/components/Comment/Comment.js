@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import * as userServices from "../../services/userService.js"
+import { toast, Zoom } from 'react-toastify';
 import "./Comment.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Comment = ({
@@ -19,10 +21,31 @@ const Comment = ({
         const comment = formData.get("textarea");
         if (comment !== "") {
             const result = await userServices.addComment(user.accessToken, id, comment);
+            toast.success('Comment successfully added !', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                transition: Zoom,
+                theme: "dark"
+            });
             historyHook.push(`/details/${id}`)
             return (result);
         }else{
-            alert("You can't add empty comment !")
+            toast.error("You can't add empty comment !", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                transition: Zoom,
+                theme: "dark"
+            });
         }
     }
 

@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.js";
 import * as authService from "../../services/authServices.js";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+import { toast, Zoom } from 'react-toastify';
 import "./Login.css"
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { loginData } = useContext(AuthContext);
@@ -18,12 +20,35 @@ const Login = () => {
 
         authService.login(email, password)
             .then((authData) => {
-                console.log(authData);
+
+                toast.success('Login successful !  Wellcome !', {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Zoom,
+                    theme: "dark"
+                });
+
                 loginData(authData);
                 historyHook.push("/");
             }).catch(err => {
-                alert(err)
-            })
+                toast.error(err, {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    transition: Zoom,
+                    theme: "dark"
+                });
+                historyHook.push("/login");
+            });
 
     }
 

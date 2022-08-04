@@ -19,8 +19,8 @@ export async function createGame(token, title, category, maxLevel, imageUrl, sum
         } else {
             throw data.message;
         }
-    } catch {
-        // TODO Catch
+    } catch (err) {
+        throw err;
     }
 }
 
@@ -42,7 +42,7 @@ export async function deleteGame(token, gameId) {
             throw data.message;
         }
     } catch (error) {
-        //TODO..
+        throw error;
     }
 }
 
@@ -62,7 +62,7 @@ export async function getGameComments(token, gameId) {
             throw result.message;
         }
     } catch (error) {
-        //TODO
+        throw error;
     }
 }
 
@@ -85,6 +85,6 @@ export async function addComment(token, gameId, comment) {
             throw result.message;
         }
     } catch (error) {
-        // TODO
+        throw error;
     }
 }

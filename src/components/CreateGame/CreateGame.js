@@ -1,7 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { isAuthenticated } from "../../hoc/isAuthenticated.js";
 import * as userServices from "../../services/userService.js"
+import { toast, Zoom } from 'react-toastify';
 import "./CreateGame.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateGame = ({
     user
@@ -15,12 +17,43 @@ const CreateGame = ({
         if (title !== "" && category !== "" && maxLevel !== "" && imageUrl !== "" && summary !== "") {
             userServices.createGame(user.accessToken, title, category, maxLevel, imageUrl, summary)
                 .then(() => {
+                    toast.success('Game added to the catalog !', {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        transition: Zoom,
+                        theme: "dark"
+                    });
                     historyHook.push("/catalog");
                 }).catch(err => {
-                    alert(err?.message)
+                    toast.error(err, {
+                        position: "top-center",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        transition: Zoom,
+                        theme: "dark"
+                    });
                 })
         } else {
-            alert("All fields must be filled!")
+            toast.error("All fields must be filled !", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                transition: Zoom,
+                theme: "dark"
+            });
         }
     }
 
@@ -34,8 +67,8 @@ const CreateGame = ({
                 <input className="create-input" type="category" name="category" placeholder="Needs to be filled ..."></input>
                 <label className="label" htmlFor="number">Max Level:</label>
                 <input className="create-input" type="number" name="number" placeholder="Needs to be filled ..."></input>
-                <label className="label" htmlFor="img">Image:</label>
-                <input className="create-input" type="img" name="img" placeholder="Needs to be filled ..."></input>
+                <label className="label" htmlFor="url">Image:</label>
+                <input className="create-input" type="url" name="url" placeholder="Needs to be filled ..."></input>
                 <label className="label" htmlFor="textarea">Summary:</label>
                 <textarea className="summary-input" type="textarea" name="textarea" placeholder="Needs to be filled ..."></textarea>
                 <button type="submit" className="create-button">Add Game</button>

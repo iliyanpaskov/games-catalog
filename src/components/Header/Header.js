@@ -1,13 +1,26 @@
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import { toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Header.css"
-import { AuthContext } from "../../context/AuthContext";
 
 
 const Header = () => {
     const { user, logoutData } = useContext(AuthContext);
     const userLogout = () => {
-        logoutData()
+        toast.success('Logout was successful !', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            transition: Zoom,
+            theme: "dark"
+        });
+        logoutData();
     }
 
     const welcomeMessage = () => {
