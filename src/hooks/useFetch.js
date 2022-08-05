@@ -11,7 +11,7 @@ const useFetch = () => {
             setState(Object.values(result))
         }
         response();
-    },[]);
+    },[state]);
     return state;
 }
 

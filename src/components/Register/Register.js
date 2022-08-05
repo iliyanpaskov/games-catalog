@@ -85,7 +85,6 @@ const Register = () => {
         let pass = e.currentTarget.value;
         if (pass.length >= 4 && pass.length <= 12) {
             setStyleState(true);
-            console.log(pass.length);
         } else {
             setStyleState(false)
         }
@@ -100,7 +99,7 @@ const Register = () => {
                 <input className="register-input" type="email" name="email" placeholder="Enter your email here"></input>
                 <label className="label" htmlFor="password">Password:</label>
                 <input className="register-input" type="password" name="password" placeholder="Enter your password here" onChange={checkPassHandler} ></input>
-                <span className="input-check" style={{ display: styleState ? "none" : "inline" }} >Password must be between 4 and 12 characters long !</span>
+                <span className="input-check" style={{ display: styleState ? "none" : "inline" }} >Password must be between 4 - 12 characters long !</span>
                 <label className="label" htmlFor="password">Confirm Password:</label>
                 <input className="register-input" type="password" name="re-password" placeholder="Confirm password here"></input>
                 <button type="submit" className="register-button">Register</button>
