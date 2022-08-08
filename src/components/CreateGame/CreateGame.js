@@ -1,9 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { isAuthenticated } from "../../hoc/isAuthenticated.js";
 import * as userServices from "../../services/userService.js"
-import { toast, Zoom } from 'react-toastify';
+import { errorNotification, successNotification } from "../../services/notificationService";
 import "./CreateGame.css";
-import 'react-toastify/dist/ReactToastify.css';
 
 const CreateGame = ({
     user
@@ -17,43 +16,13 @@ const CreateGame = ({
         if (title !== "" && category !== "" && maxLevel !== "" && imageUrl !== "" && summary !== "") {
             userServices.createGame(user.accessToken, title, category, maxLevel, imageUrl, summary)
                 .then(() => {
-                    toast.success('Game added to the catalog !', {
-                        position: "top-center",
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        transition: Zoom,
-                        theme: "dark"
-                    });
+                    successNotification('Game added to the catalog !');
                     historyHook.push("/catalog");
                 }).catch(err => {
-                    toast.error(err, {
-                        position: "top-center",
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        transition: Zoom,
-                        theme: "dark"
-                    });
+                    errorNotification(err);
                 })
         } else {
-            toast.error("All fields must be filled !", {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                transition: Zoom,
-                theme: "dark"
-            });
+            errorNotification("All fields must be filled !");
         }
     }
 

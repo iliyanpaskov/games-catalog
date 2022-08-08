@@ -1,5 +1,6 @@
 import SingleComment from "./SingleComment/SingleComment.js";
 import Dialog from "./Dialog/Dialog.js";
+import GameNotFound from "../GameNotFound/GameNotFound.js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -13,12 +14,17 @@ const Details = ({
     const [game, setGame] = useState({});
     const [comments, setComments] = useState([]);
     const [showDialog, setShowDialog] = useState(false);
+    const [gameFound, setGameFound] = useState(true)
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const gameDetails = async () => {
-            let result = await gamesServices.getOneGame(match.params.id);
-            setGame(result);
+            try {
+                let result = await gamesServices.getOneGame(match.params.id);
+                setGame(result);
+            } catch (error) {
+                setGameFound(false);
+            }
         }
         gameDetails();
     }, [match.params.id]);
@@ -32,7 +38,6 @@ const Details = ({
             gameComents();
         }
     }, [user.accessToken, match.params.id]);
-
 
     const deleteGameHandler = () => {
         return (
@@ -87,44 +92,47 @@ const Details = ({
 
 
     return (
-        <>
-            {showDialog
-                ? <Dialog message={"Are you sure you want to deldete this game ?"} handleDialog={setShowDialog} />
-                :
-                <div className="details-box">
-                    <div className="title-box">
-                        <h1 className="details-title">{game.title}</h1>
-                    </div>
+        <>{gameFound
+            ? <>
+                {showDialog
+                    ? <Dialog message={"Are you sure you want to deldete this game ?"} handleDialog={setShowDialog} />
+                    :
+                    <div className="details-box">
+                        <div className="title-box">
+                            <h1 className="details-title">{game.title}</h1>
+                        </div>
 
-                    <div className="info">
-                        <div className="game-img-box">
-                            <img src={game.imageUrl} className="details-img" alt="No img found" />
+                        <div className="info">
+                            <div className="game-img-box">
+                                <img src={game.imageUrl} className="details-img" alt="No img found" />
+                            </div>
+                            <div className="game-info-box">
+                                <ul className="game-info-list">
+                                    <li className="game-li">Category: {game.category}</li>
+                                    <li className="game-li">Max Level: {game.maxLevel}</li>
+                                    <li className="game-li">Category: {game.category}</li>
+                                    <li className="game-li">Description: {game.summary}</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className="game-info-box">
-                            <ul className="game-info-list">
-                                <li className="game-li">Category: {game.category}</li>
-                                <li className="game-li">Max Level: {game.maxLevel}</li>
-                                <li className="game-li">Category: {game.category}</li>
-                                <li className="game-li">Description: {game.summary}</li>
-                            </ul>
+                        <div className="comments-box">
+                            {
+                                comments.length > 0
+                                    ? currntGameComments()
+                                    : noCommentsYet()
+                            }
+                        </div>
+                        <div className="details-btns-wrapper">
+                            {
+                                user._id === game._ownerId
+                                    ? ownerBtns()
+                                    : userBtn()
+                            }
                         </div>
                     </div>
-                    <div className="comments-box">
-                        {
-                            comments.length > 0
-                                ? currntGameComments()
-                                : noCommentsYet()
-                        }
-                    </div>
-                    <div className="details-btns-wrapper">
-                        {
-                            user._id === game._ownerId
-                                ? ownerBtns()
-                                : userBtn()
-                        }
-                    </div>
-                </div>
-            }
+                }
+            </>
+            : <GameNotFound />}
         </>
     )
 }

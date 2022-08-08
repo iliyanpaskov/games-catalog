@@ -3,9 +3,8 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext.js";
 import * as authService from "../../services/authServices.js";
 import { Link } from "react-router-dom";
-import { toast, Zoom } from 'react-toastify';
+import { errorNotification, successNotification } from "../../services/notificationService";
 import "./Login.css"
-import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { loginData } = useContext(AuthContext);
@@ -20,36 +19,13 @@ const Login = () => {
 
         authService.login(email, password)
             .then((authData) => {
-
-                toast.success(`Wellcome ${email}!`, {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    transition: Zoom,
-                    theme: "dark"
-                });
-
+                successNotification(`Wellcome ${email}!`);
                 loginData(authData);
                 historyHook.push("/");
             }).catch(err => {
-                toast.error(err, {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    transition: Zoom,
-                    theme: "dark"
-                });
+             errorNotification(err);
                 historyHook.push("/login");
             });
-
     }
 
     return (

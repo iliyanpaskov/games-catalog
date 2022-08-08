@@ -2,10 +2,8 @@ import { Link, useHistory } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import * as authService from "../../services/authServices.js"
-import { toast, Zoom } from 'react-toastify';
+import { errorNotification, successNotification } from "../../services/notificationService";
 import "./Register.css"
-import 'react-toastify/dist/ReactToastify.css';
-
 
 const Register = () => {
     const { loginData } = useContext(AuthContext);
@@ -24,59 +22,17 @@ const Register = () => {
         if (email !== "" && styleState && password === repPassword) {
             authService.register(email, password)
                 .then((authData) => {
-
-                    toast.success('Registration successful !  Wellcome !', {
-                        position: "top-center",
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        transition: Zoom,
-                        theme: "dark"
-                    });
+                    successNotification('Registration successful !  Wellcome !')
                     loginData(authData);
                     historyHook.push("/");
                 }).catch(err => {
-
-                    toast.error(err, {
-                        position: "top-center",
-                        autoClose: 2000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        transition: Zoom,
-                        theme: "dark"
-                    });
-                })
+                    errorNotification(err)
+                });
         } else {
             if (email === "") {
-                toast.error("Enter you email !", {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    transition: Zoom,
-                    theme: "dark"
-                });
+                errorNotification("Enter you email !");
             } else {
-                toast.error("Incorrect password !", {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    transition: Zoom,
-                    theme: "dark"
-                });
+                errorNotification("Incorrect password !");
             }
         }
     }
@@ -88,7 +44,6 @@ const Register = () => {
         } else {
             setStyleState(false)
         }
-        
     }
 
     return (
@@ -106,8 +61,7 @@ const Register = () => {
                 <p>If you have an account click  :<Link className="nav-link" to="/login">HERE</Link></p>
             </div>
         </form>
-    )
-
+    );
 }
 
 export default Register;

@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda&family=Monoton&family=PT+Sans&family=PT+Serif&display=swap');
+
+
+.game-not-found-box {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 50px 50px;
+}
+
+.game-not-found-title{
+    font-family: "Merienda";
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}

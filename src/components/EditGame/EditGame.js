@@ -1,22 +1,28 @@
+import GameNotFound from "../GameNotFound/GameNotFound";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import * as gamesService from "../../services/gamesService";
 import { useHistory } from "react-router-dom";
-import { toast, Zoom } from 'react-toastify';
+import { errorNotification, successNotification } from "../../services/notificationService";
 import "./EditGame.css";
-import 'react-toastify/dist/ReactToastify.css';
 
 const EditGame = ({
     match
 }) => {
     const [game, setGame] = useState({});
+    const [gameFound, setGameFound] = useState(true)
     const { user } = useContext(AuthContext);
     const historyHook = useHistory();
 
     useEffect(() => {
         const gameToChange = async () => {
-            let result = await gamesService.getOneGame(match.params.id)
-            setGame(result)
+            try {
+                let result = await gamesService.getOneGame(match.params.id)
+                setGame(result);
+
+            } catch (error) {
+                setGameFound(false);
+            }
         }
         gameToChange();
     }, [match.params.id]);
@@ -29,54 +35,36 @@ const EditGame = ({
         if (title !== "" && category !== "" && maxLevel !== "" && imageUrl !== "" && summary !== "") {
             const changedGame = async () => {
                 let gameData = await gamesService.changeGame(game._id, user.accessToken, title, category, maxLevel, imageUrl, summary);
-                toast.success('Game updated !', {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    transition: Zoom,
-                    theme: "dark"
-                });
-                historyHook.push(`/details/${game._id}`)
-                return (gameData)
+                successNotification('Game updated !');
+                historyHook.push(`/details/${game._id}`);
+                return (gameData);
             }
             changedGame();
-        }else{
-            toast.error("All fields must be filled !", {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                transition: Zoom,
-                theme: "dark"
-            });
+        } else {
+            errorNotification("All fields must be filled !");
         }
-
     }
 
     return (
-        <form onSubmit={submitEdit} method="POST" className="edit-form">
-            <div className="edit-wrapper">
-                <h1>Edit Game:</h1>
-                <label className="label" htmlFor="title">Game Title:</label>
-                <input className="edit-input" type="title" name="title" placeholder="Needs to be filled !" defaultValue={game.title}></input>
-                <label className="label" htmlFor="category">Category:</label>
-                <input className="edit-input" type="category" name="category" placeholder="Needs to be filled !" defaultValue={game.category}></input>
-                <label className="label" htmlFor="number">Max Level:</label>
-                <input className="edit-input" type="number" name="number" placeholder="Needs to be filled !" defaultValue={game.maxLevel}></input>
-                <label className="label" htmlFor="url">Image:</label>
-                <input className="edit-input" type="url" name="imageUrl" placeholder="Needs to be filled !" defaultValue={game.imageUrl}></input>
-                <label className="label" htmlFor="summary">Summary:</label>
-                <textarea className="edit-summary-input" type="textarea" name="summary" placeholder="Needs to be filled !" defaultValue={game.summary}></textarea>
-                <button type="submit" className="edit-button">Edit</button>
-            </div>
-        </form>
+        <>{gameFound
+            ? <form onSubmit={submitEdit} method="POST" className="edit-form">
+                <div className="edit-wrapper">
+                    <h1>Edit Game:</h1>
+                    <label className="label" htmlFor="title">Game Title:</label>
+                    <input className="edit-input" type="title" name="title" placeholder="Needs to be filled !" defaultValue={game.title}></input>
+                    <label className="label" htmlFor="category">Category:</label>
+                    <input className="edit-input" type="category" name="category" placeholder="Needs to be filled !" defaultValue={game.category}></input>
+                    <label className="label" htmlFor="number">Max Level:</label>
+                    <input className="edit-input" type="number" name="number" placeholder="Needs to be filled !" defaultValue={game.maxLevel}></input>
+                    <label className="label" htmlFor="url">Image:</label>
+                    <input className="edit-input" type="url" name="imageUrl" placeholder="Needs to be filled !" defaultValue={game.imageUrl}></input>
+                    <label className="label" htmlFor="summary">Summary:</label>
+                    <textarea className="edit-summary-input" type="textarea" name="summary" placeholder="Needs to be filled !" defaultValue={game.summary}></textarea>
+                    <button type="submit" className="edit-button">Edit</button>
+                </div>
+            </form>
+            : <GameNotFound />}
+        </>
     )
 }
 
